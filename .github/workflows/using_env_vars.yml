@@ -1,0 +1,24 @@
+name: Env vars and secret Test workflow
+run-name: Testing env vars and secret
+
+on:
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: Provide environment
+          type: choice
+          default: DEV
+          options:
+            - QA
+            - DEV
+            - PROD
+            - BETA
+env:
+  ${{ github.event.inputs.environment }}
+jobs:
+  selection:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Selecting Environment
+      run: echo env:${{env}} "Hello World" in ${{ github.event.inputs.environment }} URL:${{env.URL}} secret- ${{ github.event.inputs.environment }}.${{env.API_KEY}}
