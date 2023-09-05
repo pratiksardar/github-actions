@@ -1,0 +1,22 @@
+name: Test workflow
+run-name: Basic
+
+on:
+    workflow_dispatch:
+      inputs:
+        environment:
+          description: Provide environment
+          type: choice
+          default: dev
+          options:
+            - QA
+            - DEV
+            - PROD
+            - BETA
+jobs:
+  selection:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Selecting Environment
+      run: echo "Hello World" in ${{ github.event.inputs.environment }}
