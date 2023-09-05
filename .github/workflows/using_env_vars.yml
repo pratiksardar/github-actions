@@ -19,6 +19,14 @@ jobs:
    runs-on: ubuntu-latest
    env: 
     ENV: ${{ github.event.inputs.environment }}
+    URL: ${{vars.URL}}
    steps:
-    - name: Selecting Environment
-      run: echo  env-> ${{ENV}} "Hello World" in ${{ github.event.inputs.environment }} URL:${{vars.URL}} secret- ${{ github.event.inputs.environment }}.${{secrets.API_KEY}}
+    - name: Use variables
+      run: |
+        echo 1. env-> ${{ENV}}
+        echo 2."Hello World" in ${{ github.event.inputs.environment }}
+        echo 3. URL:${URL} 
+        echo 4. secret- ${{ github.event.inputs.environment }} -> ${{secrets.API_KEY}}...
+    # - name: Selecting Environment
+      # run: |
+      # echo  env-> ${{ENV}} "Hello World" in ${{ github.event.inputs.environment }} URL:${URL} secret- ${{ github.event.inputs.environment }}.${{secrets.API_KEY}}
