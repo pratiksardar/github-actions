@@ -1,5 +1,5 @@
-name: Test workflow
-run-name: Basic
+name: Input Test workflow
+run-name: Testing input
 
 on:
     workflow_dispatch:
@@ -7,7 +7,7 @@ on:
         environment:
           description: Provide environment
           type: choice
-          default: dev
+          default: DEV
           options:
             - QA
             - DEV
