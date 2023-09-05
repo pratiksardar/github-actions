@@ -13,12 +13,12 @@ on:
             - DEV
             - PROD
             - BETA
-env: 
-  ENV: ${{ github.event.inputs.environment }}
+
 jobs:
   selection:
    runs-on: ubuntu-latest
-
+   env: 
+    ENV: ${{ github.event.inputs.environment }}
    steps:
     - name: Selecting Environment
-      run: echo env:${{ENV}} "Hello World" in ${{ github.event.inputs.environment }} URL:${{ENV.URL}} secret- ${{ github.event.inputs.environment }}.${{ENV.API_KEY}}
+      run: echo  env-> ${{ENV}} "Hello World" in ${{ github.event.inputs.environment }} URL:${{vars.URL}} secret- ${{ github.event.inputs.environment }}.${{secrets.API_KEY}}
